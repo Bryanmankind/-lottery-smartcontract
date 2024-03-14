@@ -36,9 +36,9 @@ contract Lottery {
         unit index = getRnNumber() % players.length; 
         players[index].transfer(address(this).balance)
 
-        lotteryID++;
-
         lotteryHistory[lotteryID] = players[index];
+        
+        lotteryID++;
         // Reset contract 
 
         players = new address payable[](0);
