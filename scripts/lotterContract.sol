@@ -11,7 +11,12 @@ contract Lottery {
     constructor() {
         owner = msg.sender;
     }
+    
+    function getWinnerByLottery (uint _id) public view returns (address payable) {
+        return lotteryHistory[_id]
+    }
 
+    
     function getBalnce() public view returns (uint) {
         return address(this).balance;
     }
@@ -37,7 +42,7 @@ contract Lottery {
         players[index].transfer(address(this).balance)
 
         lotteryHistory[lotteryID] = players[index];
-        
+
         lotteryID++;
         // Reset contract 
 
