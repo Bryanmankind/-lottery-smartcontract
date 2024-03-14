@@ -10,6 +10,10 @@ contract Lottery {
         owner = msg.sender;
     }
 
+    function getBalnce() public view returns (uint) {
+        return address(this).balance;
+    }
+
     function enterLottery() public {
         require(msg.value > .01 ether);
 
