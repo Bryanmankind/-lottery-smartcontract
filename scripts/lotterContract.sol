@@ -11,6 +11,29 @@ contract Lottery {
     }
 
     function enterLottery() public {
-        players.push(msg.sender);
+        require(msg.value > .01 ether);
+
+        //  address of palyers entrying the lottery...
+
+        players.push(payable (msg.sender));
+    }
+
+    function getRanNumber() public view returns (uint) {
+        return uint(keccak256(abi.encodePacked(owner, block.timestamp)));
+    }
+
+    function pickWinner() public onlyOwner {
+        unit index = getRnNumber() % players.length; 
+        palyers[index].transfer(address(this).balance)
+
+        // Reset contract 
+
+        players = new address payable[](0);
+    }
+
+    modifier onlyOwner () {
+        require (msg.sender == owner, "Not the owner");
+
+        -;
     }
 }
