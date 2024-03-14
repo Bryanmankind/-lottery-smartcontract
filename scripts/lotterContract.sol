@@ -14,6 +14,10 @@ contract Lottery {
         return address(this).balance;
     }
 
+    function getPlayers() public view returns (address payable[] memory) {
+        return players;
+    }
+
     function enterLottery() public {
         require(msg.value > .01 ether);
 
