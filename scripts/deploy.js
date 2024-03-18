@@ -1,4 +1,5 @@
 const { ethers } = require("hardhat");
+const { BigNumber } = ethers;
 
     const main = async () => {
         const LotteryContractFactory = await ethers.deployContract("Lottery");
