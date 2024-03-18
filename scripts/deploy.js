@@ -1,19 +1,19 @@
 const { ethers } = require("hardhat");
-const { BigNumber } = ethers;
+
 
     const main = async () => {
-        const LotteryContractFactory = await ethers.deployContract("Lottery");
-        const LotteryContract = await LotteryContractFactory.waitForDeployment();
+        const LotteryContractFactory = await ethers.getContractFactory("Lottery");
+        const LotteryContract = await LotteryContractFactory.deploy();
         console.log("Contract deployed to:", await LotteryContract.getAddress());
 
         
        // Call the enterLottery function
-       const amountToSend = ethers.utils.parseEther("0.02"); // Sending 0.02 ether
+       const amountToSend = ethers.parseEther("0.05"); // Sending 0.05 ether
        const enterLotteryTx = await LotteryContract.enterLottery({ value: amountToSend });
        
        await enterLotteryTx.wait();
        
-       console.log("Player entered the lottery with amount:", ethers.utils.formatEther(amountToSend));
+       console.log("Player entered the lottery with amount:", ethers.formatEther(amountToSend));
       };
       
       const runMain = async () => {
