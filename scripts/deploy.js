@@ -13,7 +13,8 @@ const { ethers } = require("hardhat");
         const numOfPlayers = 5;
        for (let i = 0; i < numOfPlayers; i++) {
         const amountToSend = ethers.parseEther("0.05"); // Sending 0.05 ether
-        const enterLotteryTx = await LotteryContract.enterLottery({ value: amountToSend });
+        const signer = (await ethers.getSigners())[i];
+        const enterLotteryTx = await LotteryContract.connect(signer).enterLottery({ value: amountToSend });
         
         await enterLotteryTx.wait();
         
