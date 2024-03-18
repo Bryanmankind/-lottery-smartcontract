@@ -14,6 +14,14 @@ const { ethers } = require("hardhat");
        await enterLotteryTx.wait();
        
        console.log("Player entered the lottery with amount:", ethers.formatEther(amountToSend));
+
+
+       // Call the getPlayers function
+      const getPlayersTxn = await LotteryContract.getPlayers();
+
+      console.log("Players entered :", getPlayersTxn);
+
+
       };
       
       const runMain = async () => {
