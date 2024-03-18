@@ -1,9 +1,16 @@
 const { ethers } = require("hardhat");
 
     const main = async () => {
-        const nftContractFactory = await ethers.deployContract("Lottery");
-        const nftContract = await nftContractFactory.waitForDeployment();
-        console.log("Contract deployed to:", await nftContract.getAddress());
+        const LotteryContractFactory = await ethers.deployContract("Lottery");
+        const LotteryContract = await LotteryContractFactory.waitForDeployment();
+        console.log("Contract deployed to:", await LotteryContract.getAddress());
+
+        // call the functions 
+
+        txn = await LotteryContract.enterLottery()
+
+        await txn.wait()
+        console.log("Player one entered with:", )
     
       };
       
