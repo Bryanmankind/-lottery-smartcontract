@@ -35,7 +35,15 @@ const { ethers } = require("hardhat");
       await getLotteryWinnerTxn.wait();
 
       console.log("winner of the lottery picked :");
-      
+
+
+      // get winner address
+
+      const getWinnerByLotteryTxn = await LotteryContract.getWinnerByLottery("1");
+
+      await getWinnerByLotteryTxn.wait();
+
+      console.log("winner of the lottery picked  is :", getWinnerByLotteryTxn);
       };
       
       const runMain = async () => {
