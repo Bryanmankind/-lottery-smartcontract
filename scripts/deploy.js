@@ -29,12 +29,12 @@ const { ethers } = require("hardhat");
       console.log("Players entered :", getPlayersTxn);
 
       // Call the winner of the lottery..
-      const owner = await ethers.getSigners()[0];
+      const [owner] = await ethers.getSigners();
       const getLotteryWinnerTxn = await LotteryContract.connect(owner).pickWinner();
 
       await getLotteryWinnerTxn.wait();
 
-      console.log("Here is the winner of the lottery :", getLotteryWinnerTxn);
+      console.log("winner of the lottery picked :");
       
       };
       
