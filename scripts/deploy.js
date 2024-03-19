@@ -21,6 +21,12 @@ const { ethers } = require("hardhat");
         
         console.log(`Player ${i + 1} entered the lottery with amount:`, ethers.formatEther(amountToSend));
        }
+
+       // get balance of address before pick
+       
+      const getBalnceTxn2 = await LotteryContract.getBalnce();
+
+      console.log("winner balance is  :", getBalnceTxn2);
        
 
 
@@ -44,11 +50,11 @@ const { ethers } = require("hardhat");
 
       console.log("winner of the lottery picked  is :", getWinnerByLotteryTxn);
 
-      // get balance of address
+      // get balance of address after pick
 
-      const getBalnceTxn = await LotteryContract.getBalnce();
+      const getBalnceTxn2 = await LotteryContract.getBalnce();
 
-      console.log("winner balance is  :", getBalnceTxn);
+      console.log("winner balance is  :", getBalnceTxn2);
 
       
       };
