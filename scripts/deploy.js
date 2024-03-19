@@ -7,11 +7,12 @@ const { ethers } = require("hardhat");
         console.log("Contract deployed to:", await LotteryContract.getAddress());
 
         
-       // Call the enterLottery function.
-      // For five players 
+        // Call the enterLottery function.
+
+        // For five players 
 
         const numOfPlayers = 5;
-       for (let i = 0; i < numOfPlayers; i++) {
+        for (let i = 0; i < numOfPlayers; i++) {
         const amountToSend = ethers.parseEther("0.05"); // Sending 0.05 ether
         const signer = (await ethers.getSigners())[i];
         const enterLotteryTx = await LotteryContract.connect(signer).enterLottery({ value: amountToSend });
@@ -42,6 +43,14 @@ const { ethers } = require("hardhat");
       const getWinnerByLotteryTxn = await LotteryContract.getWinnerByLottery("0");
 
       console.log("winner of the lottery picked  is :", getWinnerByLotteryTxn);
+
+      // get balance of address
+
+      const getBalnceTxn = await LotteryContract.getBalnce();
+
+      console.log("winner balance is  :", getBalnceTxn);
+
+      
       };
       
       const runMain = async () => {
