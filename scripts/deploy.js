@@ -23,10 +23,10 @@ const { ethers } = require("hardhat");
        }
 
        // get balance of address before pick
-       
-      const getBalnceTxn2 = await LotteryContract.getBalnce();
 
-      console.log("winner balance is  :", getBalnceTxn2);
+      const getBalnceTxn1 = await LotteryContract.getBalnce();
+
+      console.log("winner balance is  :", getBalnceTxn1);
        
 
 
