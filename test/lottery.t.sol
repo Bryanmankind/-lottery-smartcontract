@@ -1,0 +1,21 @@
+// SPDX-License-Identifier: MIT
+
+pragma solidity 0.8.24;
+
+import {Test, console} from "forge-std/Test.sol";
+import {Lottery} from "../src/Lottery.sol";
+
+contract LotteryTest is Test {
+    Lottery public lottery;
+
+    function setUp() public {
+        lottery = new Lottery();
+    }
+
+    function testenterLottery() public {
+        lottery.enterLottery();
+
+
+        
+    }
+}
