@@ -28,7 +28,12 @@ const { ethers } = require("hardhat");
 
       console.log("Players entered :", getPlayersTxn);
 
+      // Call the winner of the lottery..
 
+      const getLotteryWinnerTxn = await LotteryContract.pickWinner();
+
+      console.log("Here is the winner of the lottery :", getLotteryWinnerTxn);
+      
       };
       
       const runMain = async () => {
