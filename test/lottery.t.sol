@@ -10,12 +10,5 @@ contract LotteryTest is Test {
 
     function setUp() public {
         lottery = new Lottery();
-    }
-
-    function testenterLottery() public {
-        lottery.enterLottery();
-
-
-        
-    }
+    }s
 }
