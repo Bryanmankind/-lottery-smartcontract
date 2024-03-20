@@ -10,5 +10,5 @@ contract LotteryTest is Test {
 
     function setUp() public {
         lottery = new Lottery();
-    }s
+    }
 }
