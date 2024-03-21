@@ -28,7 +28,7 @@ contract Lottery {
     }
 
     function enterLottery() public payable  {
-        require( msg.value > .01 ether);
+        require( msg.value > .01 ether, "Not enough funds to enter the lottery");
         
         //  address of palyers entrying the lottery...
 
