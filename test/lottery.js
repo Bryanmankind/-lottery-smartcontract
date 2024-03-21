@@ -26,6 +26,7 @@ describe("Lottery", function () {
     });
 
     // Check if address has more than .01 eth to enter lottery
+
     it("Should receive and store the funds > 0.01 ether", async function () {
       const { lottery, owner, otherAccount } = await loadFixture(deployLotteryContract);
     
@@ -62,9 +63,5 @@ describe("Lottery", function () {
       await expect(lottery.connect(otherAccount).pickWinner()).to.be.revertedWith("Not the owner");
 
     })
-    
-    
   });
-
-
 });
