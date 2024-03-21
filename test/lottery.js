@@ -25,6 +25,7 @@ describe("Lottery", function () {
       expect(await lottery.owner()).to.equal(owner.address);
     });
 
+    // Check if address has more than .01 eth to enter lottery
     it("Should receive and store the funds > 0.01 ether", async function () {
       const { lottery, owner, otherAccount } = await loadFixture(deployLotteryContract);
     
@@ -38,6 +39,8 @@ describe("Lottery", function () {
   
     });
 
+      // Check if the player has been added
+
     it ("should check if player has been added ", async function () {
 
       const { lottery, otherAccount} = await loadFixture(deployLotteryContract);
@@ -45,12 +48,13 @@ describe("Lottery", function () {
       await expect(lottery.connect(otherAccount).enterLottery({ value: ethers.parseEther("0.011") }))
         .to.not.be.reverted;
 
-      // Check if the player has been added
       const players = await lottery.getPlayers();
 
       await expect(players).to.have.lengthOf(1); 
 
     })
+     
+    // check if only Owner can call pickWinner function 
 
     it("Should check is only Owner can call pickWinner", async function () {
       const { lottery, otherAccount } = await loadFixture(deployLotteryContract);
