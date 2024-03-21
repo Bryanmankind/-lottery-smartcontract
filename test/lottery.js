@@ -35,11 +35,29 @@ describe("Lottery", function () {
       // Send 0.011 ether to the contract (greater than 0.01 ether)
       await expect(lottery.connect(otherAccount).enterLottery({ value: ethers.parseEther("0.011") }))
         .to.not.be.reverted;
-    
+  
+    });
+
+    it ("should check if player has been added ", async function () {
+
+      const { lottery, otherAccount} = await loadFixture(deployLotteryContract);
+
+      await expect(lottery.connect(otherAccount).enterLottery({ value: ethers.parseEther("0.011") }))
+        .to.not.be.reverted;
+
       // Check if the player has been added
       const players = await lottery.getPlayers();
-      expect(players).to.have.lengthOf(1);
-    });
+
+      await expect(players).to.have.lengthOf(1); 
+
+    })
+
+    it("Should check is only Owner can call pickWinner", async function () {
+      const { lottery, otherAccount } = await loadFixture(deployLotteryContract);
+
+      await expect(lottery.connect(otherAccount).pickWinner()).to.be.revertedWith("Not the owner");
+
+    })
     
     
   });
