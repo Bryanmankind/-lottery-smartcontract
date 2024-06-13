@@ -20,6 +20,7 @@ const { ethers } = require("hardhat");
         await enterLotteryTx.wait();
         
         console.log(`Player ${i + 1} entered the lottery with amount:`, ethers.formatEther(amountToSend));
+    
        }
 
        // get balance of lottery contract before pick

@@ -28,7 +28,7 @@ describe("Lottery", function () {
     // Check if address has more than .01 eth to enter lottery
 
     it("Should receive and store the funds > 0.01 ether", async function () {
-      const { lottery, owner, otherAccount } = await loadFixture(deployLotteryContract);
+      const { lottery, otherAccount } = await loadFixture(deployLotteryContract);
     
       // Send 0.009 ether to the contract (less than 0.01 ether)
       await expect(lottery.connect(otherAccount).enterLottery({ value: ethers.parseEther("0.009") }))
@@ -65,3 +65,4 @@ describe("Lottery", function () {
     })
   });
 });
+
